@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SheCodes Week 5 Homework</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4ae3380eff.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="citySearchForm">
+        <div class="col-6">
+          <input
+            type="text"
+            placeholder="Enter City Name..."
+            class="form-control"
+            id="cityNameInput"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="btn btn-info col-2" id="searchButton">
+          Search
+        </button>
+        <button type="submit" class="btn btn-info col-2" id="currentButton">
+          Current
+        </button>
+      </form>
+
+      <div class="row" id="daysWeather">
+        <div class="col-6">
+          <h1 class="city" id="cityName"> </h1>
+          <h2>
+            <i class="fas //fa-sun" id="currentWeatherIcon"></i>
+            <span class="temperature" id="currentTemperature">  </span>
+            <span class="tempUnits">
+                &deg;<a href="#" id="fahrenheit-link">F</a> | &deg;<a
+                href="#"
+                id="celsius-link"
+                >C</a
+              >
+            </span>
+          </h2>
+        </div>
+        <div class="col-6">
+          <p class="weatherInfo">
+            <span id="currentDayOfTheWeekAndTime"> </span>
+            <br />
+            <span id="localConditions"> </span>
+            <br />
+            Humidity: <span id="localHumidity"> </span>%
+            <br />
+            Wind: <span id="localWindSpeed"> </span> MPH
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="dailyWeather">
+        <div class="row" id="forecast">
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayZeroWeekday">Tuesday</h5>
+                <p class="card-text">
+                  <i class="fas fa-cloud" id="forecastDayZeroIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayZeroTemperature"
+                  >
+                    51&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayOneWeekday">Wednesday</h5>
+                <p class="card-text">
+                  <i class="fas fa-bolt" id="forecastDayOneIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayOneTemperature"
+                  >
+                    49&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayTwoWeekday">Thursday</h5>
+                <p class="card-text">
+                  <i class="fas fa-cloud-sun" id="forecastDayTwoIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayTwoTemperature"
+                  >
+                    46&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayThreeWeekday">Friday</h5>
+                <p class="card-text">
+                  <i class="fas fa-cloud-rain" id="forecastDayThreeIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayThreeTemperature"
+                  >
+                    38&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayFourWeekday">Saturday</h5>
+                <p class="card-text">
+                  <i class="fas fa-snowflake" id="forecastDayFourIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayFourTemperature"
+                  >
+                    32&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="forecastDayFiveWeekday">Sunday</h5>
+                <p class="card-text">
+                  <i class="fas fa-wind" id="forecastDayFiveIcon"></i>
+                  <br />
+                  <span
+                    class="forecastDailyTemperature"
+                    id="forecastDayFiveTemperature"
+                  >
+                    35&deg;
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
