@@ -30,3 +30,8 @@ h5 {
 .forecastDailyTemperature {
   text-align: center;
 }
+
+.openSourceCode {
+  text-align: center;
+  font-size: 11px;
+}
