@@ -28,18 +28,20 @@ function searchCity(city) {
 }
 
 function showTodaysWeather(response) {
-  document.querySelector("#cityName").innerHTML = response.data.name;
-  document.querySelector("#currentTemperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#localConditions").innerHTML =
-    response.data.weather[0].main;
-  document.querySelector("#localHumidity").innerHTML = Math.round(
-    response.data.main.humidity
-  );
-  document.querySelector("#localWindSpeed").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  let cityName = document.querySelector("#cityName");
+  let temperatureElement = document.querySelector("#currentTemperature");
+  let localCondition = document.querySelector("#localConditions");
+  let localHumidity = document.querySelector("#localHumidity");
+  let localWindSpeed = document.querySelector("#localWindSpeed");
+  // icon
+
+  fahrenheitTemperature = response.data.main.temp;
+
+  cityName.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  localCondition.innerHTML = response.data.weather[0].main;
+  localHumidity.innerHTML = Math.round(response.data.main.humidity);
+  localWindSpeed.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function handleSubmit(event) {
@@ -47,8 +49,6 @@ function handleSubmit(event) {
   let city = document.querySelector("#cityNameInput").value;
   searchCity(city);
 }
-let citySearch = document.querySelector("#searchButton");
-citySearch.addEventListener("click", handleSubmit);
 
 function searchLocation(position) {
   let latitude = position.coords.latitude;
@@ -66,5 +66,29 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#currentButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemperature");
+  let celsiusTemperature = (fahrenheitTemperature - 32) * (5 / 9);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitTemperature = null;
+
+let citySearch = document.querySelector("#searchButton");
+citySearch.addEventListener("click", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("Columbus");
