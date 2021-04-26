@@ -33,7 +33,7 @@ function showTodaysWeather(response) {
   let localCondition = document.querySelector("#localConditions");
   let localHumidity = document.querySelector("#localHumidity");
   let localWindSpeed = document.querySelector("#localWindSpeed");
-  // icon
+  let localIconElement = document.querySelector("#icon");
 
   fahrenheitTemperature = response.data.main.temp;
 
@@ -42,6 +42,11 @@ function showTodaysWeather(response) {
   localCondition.innerHTML = response.data.weather[0].main;
   localHumidity.innerHTML = Math.round(response.data.main.humidity);
   localWindSpeed.innerHTML = Math.round(response.data.wind.speed);
+  localIconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  localIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function handleSubmit(event) {
