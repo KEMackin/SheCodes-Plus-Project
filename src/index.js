@@ -20,7 +20,27 @@ function formatDate(timestamp) {
   }
   return `${day} ${hour}:${minute}`;
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
 
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+      <div class="weatherForecastDay">${day}</div>
+      <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="" width=56px/>
+      <div class="weatherForecastTemperatures">
+        <span class="weatherForecastTemperatureMax">64&deg;</span>
+        <span class="weatherForecastTemperatureMin">32&deg;</span>
+      </div>
+      </div>
+    `;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
 function searchCity(city) {
   let unit = "imperial";
   let apiKey = "1669d85569859d438e4589e00b1b14c2";
@@ -104,3 +124,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("Columbus");
+displayForecast();
