@@ -1,24 +1,25 @@
-let now = new Date();
-let currentDateTime = document.querySelector("#currentDayOfTheWeekAndTime");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = now.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  return `${day} ${hour}:${minute}`;
 }
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-currentDateTime.innerHTML = `${day} ${hour}:${minute}`;
 
 function searchCity(city) {
   let unit = "imperial";
@@ -34,9 +35,10 @@ function showTodaysWeather(response) {
   let localHumidity = document.querySelector("#localHumidity");
   let localWindSpeed = document.querySelector("#localWindSpeed");
   let localIconElement = document.querySelector("#icon");
-
+  let dateAndTimeElement = document.querySelector(
+    "#currentDayOfTheWeekAndTime"
+  );
   fahrenheitTemperature = response.data.main.temp;
-
   cityName.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   localCondition.innerHTML = response.data.weather[0].main;
@@ -47,6 +49,7 @@ function showTodaysWeather(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   localIconElement.setAttribute("alt", response.data.weather[0].description);
+  dateAndTimeElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function handleSubmit(event) {
