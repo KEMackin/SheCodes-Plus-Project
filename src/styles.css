@@ -20,17 +20,20 @@ i {
 p {
   font-size: 20px;
 }
-.citySearchForm {
-  padding: 0px;
-}
 h5 {
   font-size: 11px;
   font-weight: bold;
 }
+.citySearchForm {
+  padding: 0px;
+}
 .forecastDailyTemperature {
   text-align: center;
 }
-
+.card {
+  background: linear-gradient(-225deg, #adf0ef 0%, #79fcfa 100%);
+  border: 1px solid #0fcdf3;
+}
 .openSourceCodeLink {
   text-align: center;
   font-size: 12px;
