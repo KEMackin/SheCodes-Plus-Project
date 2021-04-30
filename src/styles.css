@@ -20,6 +20,9 @@ i {
 p {
   font-size: 20px;
 }
+a {
+  text-decoration: none;
+}
 h5 {
   font-size: 11px;
   font-weight: bold;
@@ -30,6 +33,13 @@ h5 {
 .forecastDailyTemperature {
   text-align: center;
 }
+.tempUnits .active {
+  color: black;
+  cursor: default;
+}
+.tempUnits .active:hover {
+  text-decoration: none;
+}
 .card {
   background: linear-gradient(-225deg, #adf0ef 0%, #9efffd 100%);
   border: 1px solid #0fcdf3;
@@ -37,4 +47,10 @@ h5 {
 .openSourceCodeLink {
   text-align: center;
   font-size: 12px;
+}
+.gitHubLink {
+  text-decoration: underline;
+}
+.netlifyLink {
+  text-decoration: underline;
 }
